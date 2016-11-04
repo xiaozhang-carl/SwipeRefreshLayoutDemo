@@ -12,7 +12,7 @@ import example.com.swiperefreshlayoutdemo.databinding.ActivityGuideBinding;
  * Created by zhanghongqiang on 2016/11/2  下午4:22
  * ToDo:
  */
-public class GuideActivity extends BaseActivity {
+public class GuideActivity extends BaseNetActivity {
 
     private ActivityGuideBinding mBinding;
 

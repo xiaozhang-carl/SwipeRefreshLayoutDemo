@@ -19,7 +19,7 @@ import example.com.swiperefreshlayoutdemo.presenter.RecyclerViewContract;
 import example.com.swiperefreshlayoutdemo.presenter.RecyclerViewPresenter;
 import example.com.swiperefreshlayoutdemo.subscribers.OnNextOnError;
 
-public class RecylerViewActivity extends BaseActivity implements RecyclerViewContract.IFLoadData, RecyclerViewContract.IFAdapter<Movie> {
+public class RecylerViewActivity extends BaseNetActivity implements RecyclerViewContract.IFLoadData, RecyclerViewContract.IFAdapter<Movie> {
 
     private ActivityRecyclerViewBinding mBinding;
 

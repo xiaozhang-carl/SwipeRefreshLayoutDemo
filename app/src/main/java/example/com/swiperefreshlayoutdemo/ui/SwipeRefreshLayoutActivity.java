@@ -15,7 +15,7 @@ import example.com.swiperefreshlayoutdemo.viewmodel.SwpieViewModel;
  * Created by zhanghongqiang on 2016/11/2  下午4:26
  * ToDo:
  */
-public class SwipeRefreshLayoutActivity extends BaseActivity {
+public class SwipeRefreshLayoutActivity extends BaseNetActivity {
 
     private ActivitySwipeRefreshLayoutBinding mBinding;
 
