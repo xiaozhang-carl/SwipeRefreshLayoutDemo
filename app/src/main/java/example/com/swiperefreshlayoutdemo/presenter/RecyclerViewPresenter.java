@@ -340,20 +340,17 @@ public class RecyclerViewPresenter<T> extends RecyclerViewContract.RVPresenter {
         if (position < 0) {
             return;
         }
-        if (mAdapter != null) {
-            if (mHeaderView == null) {
-                mAdapter.notifyItemChanged(position);
-            } else {
-                mAdapter.notifyItemChanged(position + 1);
-            }
-        }
+        mAdapter.notifyItemChanged(position);
     }
 
     @Override
-    public void notifyItemRangeRemoved(int position) {
-        if (position < 0) {
+    public void notifyItemRangeRemoved(Object o) {
+
+        if (o==null) {
             return;
         }
+        T t = (T) o;
+        int position=indexOf(t);
         if (mAdapter != null) {
             getDataList().remove(position);
             if (mHeaderView == null) {

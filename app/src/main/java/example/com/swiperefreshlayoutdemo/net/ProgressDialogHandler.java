@@ -1,4 +1,4 @@
-package example.com.swiperefreshlayoutdemo.subscribers;
+package example.com.swiperefreshlayoutdemo.net;
 
 import android.app.Activity;
 import android.app.ProgressDialog;

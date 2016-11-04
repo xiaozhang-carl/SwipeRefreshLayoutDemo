@@ -1,4 +1,4 @@
-package example.com.swiperefreshlayoutdemo.subscribers;
+package example.com.swiperefreshlayoutdemo.net;
 
 /**
  * Created by zhanghongqiang on 16/7/12.

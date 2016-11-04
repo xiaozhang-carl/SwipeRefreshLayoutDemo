@@ -7,8 +7,8 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
 import example.com.swiperefreshlayoutdemo.ActivityManager;
-import example.com.swiperefreshlayoutdemo.subscribers.ProgressCancelListener;
-import example.com.swiperefreshlayoutdemo.subscribers.ProgressDialogHandler;
+import example.com.swiperefreshlayoutdemo.net.ProgressCancelListener;
+import example.com.swiperefreshlayoutdemo.net.ProgressDialogHandler;
 
 /**
  * Created by zhanghongqiang on 2016/11/4  下午4:08

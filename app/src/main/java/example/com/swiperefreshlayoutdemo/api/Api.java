@@ -5,11 +5,11 @@ import android.content.Context;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import example.com.swiperefreshlayoutdemo.subscribers.OnNext;
-import example.com.swiperefreshlayoutdemo.subscribers.OnNextOnError;
-import example.com.swiperefreshlayoutdemo.subscribers.OnNextOnErrorNoMatch;
-import example.com.swiperefreshlayoutdemo.subscribers.ProgressSubscriber;
-import example.com.swiperefreshlayoutdemo.subscribers.SilentlySubscriber;
+import example.com.swiperefreshlayoutdemo.net.OnNext;
+import example.com.swiperefreshlayoutdemo.net.OnNextOnError;
+import example.com.swiperefreshlayoutdemo.net.OnNextOnErrorNoMatch;
+import example.com.swiperefreshlayoutdemo.net.ProgressSubscriber;
+import example.com.swiperefreshlayoutdemo.net.SilentlySubscriber;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Response;

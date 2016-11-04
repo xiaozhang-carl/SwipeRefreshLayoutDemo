@@ -27,7 +27,7 @@ public interface RecyclerViewContract {
         int getViewType(int position);
 
         //显示数据
-        void setData(@NonNull T data, @NonNull ViewDataBinding binding);
+        void setData(@NonNull T data, @NonNull ViewDataBinding binding,int position);
 
         //这里的使用一定要注意,用第二个参数来判断
         ViewDataBinding createView(ViewGroup parent, int position);
@@ -58,7 +58,7 @@ public interface RecyclerViewContract {
 
         public abstract void notifyItemChanged(int position);
 
-        public abstract void notifyItemRangeRemoved(int position);
+        public abstract<T> void notifyItemRangeRemoved(T t);
 
         public abstract void notifyItemRangeInserted(int position, T t);
 
@@ -79,7 +79,7 @@ public interface RecyclerViewContract {
 
             @Override
             public void onBindViewHolder(RVViewHolder holder, int position) {
-                holder.setData(getItem(position));
+                holder.setData(getItem(position),holder.getAdapterPosition());
             }
 
             private T getItem(int position) {
@@ -126,9 +126,9 @@ public interface RecyclerViewContract {
                 super(itemView);
             }
 
-            public void setData(T data) {
+            public void setData(T data,int position) {
                 //调用接口的方法
-                mAdapter.setData(data, mViewDataBinding);
+                mAdapter.setData(data, mViewDataBinding,position);
             }
         }
 

@@ -17,7 +17,7 @@ import example.com.swiperefreshlayoutdemo.model.HttpResult;
 import example.com.swiperefreshlayoutdemo.model.Movie;
 import example.com.swiperefreshlayoutdemo.presenter.RecyclerViewContract;
 import example.com.swiperefreshlayoutdemo.presenter.RecyclerViewPresenter;
-import example.com.swiperefreshlayoutdemo.subscribers.OnNextOnError;
+import example.com.swiperefreshlayoutdemo.net.OnNextOnError;
 
 public class RecylerViewActivity extends BaseNetActivity implements RecyclerViewContract.IFLoadData, RecyclerViewContract.IFAdapter<Movie> {
 
@@ -59,7 +59,6 @@ public class RecylerViewActivity extends BaseNetActivity implements RecyclerView
                     }
 
 
-
                     @Override
                     public void onError(Throwable e) {
                         mRecyclerViewPresenter.refreshComplete();
@@ -69,7 +68,7 @@ public class RecylerViewActivity extends BaseNetActivity implements RecyclerView
 
 
     @Override
-    public void setData(@NonNull final Movie data, @NonNull ViewDataBinding binding) {
+    public void setData(@NonNull final Movie data, @NonNull ViewDataBinding binding, final int position) {
         ItemMovieBinding b = (ItemMovieBinding) binding;
         b.setMovie(data);
 
@@ -81,9 +80,11 @@ public class RecylerViewActivity extends BaseNetActivity implements RecyclerView
 //                mRecyclerViewPresenter.notifyItemRangeInserted(0, data);
 //                (Movie)mRecyclerViewPresenter.getDataList().get(0).
                 data.setTitle("notifyItemChanged");
-                int position = mRecyclerViewPresenter.indexOf(data);
+
 //                mRecyclerViewPresenter.notifyItemChanged(position);
-                mRecyclerViewPresenter.notifyItemRangeRemoved(position);
+
+                //添加,删除还是有问题
+                mRecyclerViewPresenter.notifyItemRangeRemoved(data);
             }
         });
 
