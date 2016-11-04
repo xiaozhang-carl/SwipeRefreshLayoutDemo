@@ -5,6 +5,7 @@ import android.databinding.BindingAdapter;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import example.com.swiperefreshlayoutdemo.utils.Config;
+import me.relex.photodraweeview.PhotoDraweeView;
 
 
 /**
@@ -25,4 +26,9 @@ public final class MyBindingAdapter {
         Config.getImageLoader().displayImage(simpleDraweeView, url);
     }
 
+
+    @BindingAdapter({"zoomUrl"})
+    public static void showloadImage(PhotoDraweeView photoDraweeView, String url) {
+        Config.getImageLoader().displayImage(photoDraweeView, url);
+    }
 }

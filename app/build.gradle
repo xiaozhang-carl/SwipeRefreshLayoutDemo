@@ -48,6 +48,7 @@ dependencies {
     compile 'com.facebook.fresco:imagepipeline-okhttp3:0.14.0'
     compile 'com.facebook.fresco:animated-gif:0.14.0'
     compile 'com.facebook.fresco:animated-webp:0.14.0'
+    compile 'me.relex:photodraweeview:1.1.2'
 
     /*注解处理器*/
     compile 'org.parceler:parceler-api:1.0.4'

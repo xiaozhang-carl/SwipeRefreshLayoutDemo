@@ -30,4 +30,8 @@ public class GuideActivity extends BaseNetActivity {
     public void SwipeRefreshLayoutActivity(View view) {
         startActivity(SwipeRefreshLayoutActivity.class);
     }
+
+    public void PhotoViewActivity(View view) {
+        startActivity(PhotoViewActivity.class);
+    }
 }

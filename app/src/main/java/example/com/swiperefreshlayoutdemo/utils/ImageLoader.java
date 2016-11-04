@@ -22,6 +22,7 @@ import com.facebook.imagepipeline.request.ImageRequestBuilder;
 
 import example.com.swiperefreshlayoutdemo.MyApplacation;
 import example.com.swiperefreshlayoutdemo.R;
+import me.relex.photodraweeview.PhotoDraweeView;
 
 /**
  * Created by zhanghongqiang on 16/7/4  上午9:53
@@ -41,6 +42,17 @@ public class ImageLoader {
         displayImage(simpleDraweeView, url, R.mipmap.ic_launcher);
     }
 
+    /**
+     * 显示网络图片
+     *
+     * @param photoDraweeView
+     * @param url
+     */
+
+    public void displayImage(PhotoDraweeView photoDraweeView, String url) {
+        Uri uri = Uri.parse(url);
+        photoDraweeView.setPhotoUri(uri);
+    }
 
     /**
      * 显示SD卡图片

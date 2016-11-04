@@ -8,24 +8,33 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical">
 
 
         <com.github.rubensousa.raiflatbutton.RaiflatButton
-            android:id="@+id/normalButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:onClick="RecylerViewActivity"
             android:text="RecylerViewActivity"
+            android:textAllCaps="false"/>
+
+        <com.github.rubensousa.raiflatbutton.RaiflatButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:onClick="PhotoViewActivity"
+            android:text="PhotoViewActivity"
             android:textAllCaps="false"/>
 
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="SwipeRefreshLayoutActivity"
+            android:layout_margin="5dp"
             android:onClick="SwipeRefreshLayoutActivity"
+            android:text="SwipeRefreshLayoutActivity"
             android:textAllCaps="false"/>
 
     </LinearLayout>
