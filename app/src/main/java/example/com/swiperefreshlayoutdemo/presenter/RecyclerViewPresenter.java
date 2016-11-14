@@ -346,11 +346,11 @@ public class RecyclerViewPresenter<T> extends RecyclerViewContract.RVPresenter {
     @Override
     public void notifyItemRangeRemoved(Object o) {
 
-        if (o==null) {
+        if (o == null) {
             return;
         }
         T t = (T) o;
-        int position=indexOf(t);
+        int position = indexOf(t);
         if (mAdapter != null) {
             getDataList().remove(position);
             if (mHeaderView == null) {
@@ -360,6 +360,7 @@ public class RecyclerViewPresenter<T> extends RecyclerViewContract.RVPresenter {
             }
         }
     }
+
 
     @Override
     public void notifyItemRangeInserted(int position, Object o) {

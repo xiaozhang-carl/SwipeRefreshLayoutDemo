@@ -58,7 +58,7 @@ public interface RecyclerViewContract {
 
         public abstract void notifyItemChanged(int position);
 
-        public abstract<T> void notifyItemRangeRemoved(T t);
+        public abstract void notifyItemRangeRemoved(T t);
 
         public abstract void notifyItemRangeInserted(int position, T t);
 
