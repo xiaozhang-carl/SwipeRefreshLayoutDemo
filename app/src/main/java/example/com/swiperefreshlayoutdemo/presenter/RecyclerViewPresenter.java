@@ -46,7 +46,7 @@ public class RecyclerViewPresenter<T> extends RecyclerViewContract.RVPresenter {
     //分页,从0开始
     private int mPage = 0;
     //每一页的item个数,默认20条
-    private int mCount = 5;
+    private int mCount = 1;
 
     public RecyclerViewPresenter(RecyclerViewContract.IFLoadData loadData, RecyclerViewContract.IFAdapter adapter) {
         super(loadData, adapter);
@@ -130,6 +130,7 @@ public class RecyclerViewPresenter<T> extends RecyclerViewContract.RVPresenter {
             public void onRefresh() {
                 //下拉刷新使用
                 mPage = 0;
+                mLoading = true;
                 //初次加载，加载更多的不显示
                 if (mLoadingView instanceof LoadingMoreView) {
                     LoadingMoreView loadingView = (LoadingMoreView) mLoadingView;
@@ -272,39 +273,29 @@ public class RecyclerViewPresenter<T> extends RecyclerViewContract.RVPresenter {
     public void add(List list) {
         //下拉刷新,多次请求首页的话,清空数据
         if (mPage == 1 || mPage == 0) {
-            //第一页就没有数据,显示空数据
-            if (list.size() == 0) {
-                //刷新完成,隐藏进度条...
-                refreshComplete();
-                clearData();
-                showEmptyView();
-                return;
-            } else {
-                //隐藏占位图
-                hideEmptyView();
-                //刷新完成,隐藏进度条...
-                refreshComplete();
+            //首先清空原有数据
+            clearData();
+            if (list.size() != 0) {
                 //有数据的话,清空原来的数据,防止数据重复添加。
                 clearData();
                 getDataList().addAll(list);
                 mAdapter.notifyDataSetChanged();
                 Log.i(TAG, "mPage =" + mPage + ",refreshComplete()");
-                return;
             }
+            showEmptyView();
+        } else {
+            //加入新的数据
+            //一定要调用这个方法,因为XRecyclerView添加了头部,所以这个position+1
+            int position = getDataList().size();
+            if (mHeaderView == null) {
+                mAdapter.addNewList(position, list);
+            } else {
+                mAdapter.addNewList(position + 1, list);
+            }
+            Log.i(TAG, "mPage =" + mPage + ",refreshComplete()");
         }
-        //隐藏占位图
-        hideEmptyView();
         //刷新完成,隐藏进度条...
         refreshComplete();
-        //加入新的数据
-        //一定要调用这个方法,因为XRecyclerView添加了头部,所以这个position+1
-        int position = getDataList().size();
-        if (mHeaderView == null) {
-            mAdapter.addNewList(position, list);
-        } else {
-            mAdapter.addNewList(position + 1, list);
-        }
-        Log.i(TAG, "mPage =" + mPage + ",refreshComplete()");
     }
 
     //刷新完成,隐藏进度条...
@@ -393,17 +384,12 @@ public class RecyclerViewPresenter<T> extends RecyclerViewContract.RVPresenter {
             //显示数据总数
             int totalCount = layoutManager.getItemCount();
             //判断RecyclerView的状态
-
-            if (visibleCount > 0
-                    && newState == RecyclerView.SCROLL_STATE_IDLE
-                    && mLastVisibleItemPosition >= totalCount - 1
-                    && !mLoading && mLoadData != null) {
-
-                mLoading = true;
-                //说明需要下拉刷新
-                if (getDataList().size() == 0) {
-                    reLoadData();
-                } else {
+            if (!mSwipeLayout.isRefreshing()) {
+                if (visibleCount > 0
+                        && newState == RecyclerView.SCROLL_STATE_IDLE
+                        && mLastVisibleItemPosition >= totalCount - 1
+                        && !mLoading && mLoadData != null) {
+                    mLoading = true;
                     //加载更多的显示
                     if (mLoadingView instanceof LoadingMoreView && !mSwipeLayout.isRefreshing()) {
                         LoadingMoreView LoadingMoreView = (LoadingMoreView) mLoadingView;

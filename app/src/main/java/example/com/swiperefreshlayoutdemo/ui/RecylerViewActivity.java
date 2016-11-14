@@ -49,7 +49,7 @@ public class RecylerViewActivity extends BaseNetActivity implements RecyclerView
     public void loadData() {
         pendingSubscriptions.add(Api.toSubscribe(Api.getInstance().getRest().getTopMovie(
                 mRecyclerViewPresenter.nextPage()
-                , 10)
+                , mRecyclerViewPresenter.getCount())
                 , new OnNextOnError<HttpResult<List<Movie>>>() {
 
 
